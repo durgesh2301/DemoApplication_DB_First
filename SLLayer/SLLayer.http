@@ -1,0 +1,6 @@
+@SLLayer_HostAddress = http://localhost:5282
+
+GET {{SLLayer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
