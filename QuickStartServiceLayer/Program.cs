@@ -1,7 +1,7 @@
-using DALLayer;
-using DALLayer.Models;
+using QuickStartDALLayer;
+using QuickStartDALLayer.Models;
 
-namespace SLLayer
+namespace QuickStartServiceLayer
 {
     public class Program
     {

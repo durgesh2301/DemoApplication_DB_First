@@ -1,9 +1,9 @@
-﻿using DALLayer;
-using DALLayer.Models;
+﻿using QuickStartDALLayer;
+using QuickStartDALLayer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SLLayer.Controllers
+namespace QuickStartServiceLayer.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]

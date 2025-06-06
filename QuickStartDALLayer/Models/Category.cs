@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace DALLayer.Models;
+namespace QuickStartDALLayer.Models;
 
 public partial class Category
 {

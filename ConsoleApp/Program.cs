@@ -1,6 +1,6 @@
 ﻿using System;
-using DALLayer;
-using DALLayer.Models;
+using QuickStartDALLayer;
+using QuickStartDALLayer.Models;
 
 namespace ConsoleApp
 {

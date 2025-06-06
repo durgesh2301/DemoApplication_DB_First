@@ -1,4 +1,4 @@
-namespace SLLayer
+namespace QuickStartServiceLayer
 {
     public class WeatherForecast
     {

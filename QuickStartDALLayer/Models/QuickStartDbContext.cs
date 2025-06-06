@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Json;
 
-namespace DALLayer.Models;
+namespace QuickStartDALLayer.Models;
 
 public partial class QuickStartDbContext : DbContext
 {

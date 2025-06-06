@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DALLayer.Models;
+namespace QuickStartDALLayer.Models;
 
 public partial class CardDetail
 {

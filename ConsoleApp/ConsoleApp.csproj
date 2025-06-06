@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DALLayer\DALLayer.csproj" />
+    <ProjectReference Include="..\DALLayer\QuickStartDALLayer.csproj" />
   </ItemGroup>
 
 </Project>

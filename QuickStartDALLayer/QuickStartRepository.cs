@@ -1,4 +1,4 @@
-﻿using DALLayer.Models;
+﻿using QuickStartDALLayer.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DALLayer
+namespace QuickStartDALLayer
 {
     public class QuickStartRepository
     {
