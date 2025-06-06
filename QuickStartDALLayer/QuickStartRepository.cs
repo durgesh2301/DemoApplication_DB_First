@@ -22,7 +22,7 @@ namespace QuickStartDALLayer
             List<Category> categories = new List<Category>();
             try
             {
-                categories = QuickStartDbContext.Categories.ToList();
+                categories = QuickStartDbContext.Categories.OrderBy(c => c.CategoryId).ToList();
             }
             catch (Exception ex)
             {
@@ -60,6 +60,22 @@ namespace QuickStartDALLayer
             }
 
             return products;
+        }
+
+        public Product GetProductByProductId(string productId)
+        {
+            Product product = new Product();
+
+            try
+            {
+                product = QuickStartDbContext.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+            }
+            catch(Exception ex)
+            {
+                product = null;
+            }
+
+            return product;
         }
 
         public List<Product> FilterProductsUsingLike(string searchString)
