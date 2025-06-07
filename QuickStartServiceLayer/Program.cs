@@ -18,9 +18,10 @@ namespace QuickStartServiceLayer
 
             builder.Services.AddTransient<QuickStartDbContext>();
             builder.Services.AddTransient<QuickStartRepository>(
-                c=> new QuickStartRepository(c.GetRequiredService<QuickStartDbContext>())
+                c => new QuickStartRepository(c.GetRequiredService<QuickStartDbContext>())
                 );
 
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
 
             var app = builder.Build();
 

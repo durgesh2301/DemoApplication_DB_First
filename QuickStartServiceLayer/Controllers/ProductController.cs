@@ -1,7 +1,8 @@
-﻿using QuickStartDALLayer;
-using QuickStartDALLayer.Models;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using QuickStartDALLayer;
+using QuickStartDALLayer.Models;
 
 namespace QuickStartServiceLayer.Controllers
 {
@@ -10,9 +11,11 @@ namespace QuickStartServiceLayer.Controllers
     public class ProductController : Controller
     {
         QuickStartRepository _quickStartRepository;
-        public ProductController(QuickStartRepository quickStartRepository)
+        private readonly IMapper _mapper;
+        public ProductController(QuickStartRepository quickStartRepository, IMapper mapper)
         {
             _quickStartRepository = quickStartRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -122,18 +125,24 @@ namespace QuickStartServiceLayer.Controllers
         }
 
         [HttpPost]
-        public JsonResult AddProductUsingStoredProcedure(Product product)
+        public JsonResult AddProductUsingStoredProcedure(Models.Product product)
         {
             string ProductId = string.Empty;
             int returnResult = 0;
-            try
+
+            Product newProduct = _mapper.Map<Product>(product);
+
+            if (ModelState.IsValid)
             {
-                returnResult = _quickStartRepository.AddProductUsingStoredProcedure(product,out ProductId);
-            }
-            catch (Exception ex)
-            {
-                returnResult = 0;
-                ProductId = string.Empty;
+                try
+                {
+                    returnResult = _quickStartRepository.AddProductUsingStoredProcedure(newProduct, out ProductId);
+                }
+                catch (Exception ex)
+                {
+                    returnResult = 0;
+                    ProductId = string.Empty;
+                }
             }
             return Json(new { Result = returnResult, ProductId });
         }
