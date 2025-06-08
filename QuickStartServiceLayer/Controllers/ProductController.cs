@@ -226,7 +226,7 @@ namespace QuickStartServiceLayer.Controllers
             return Json(isUpdated);
         }
 
-        [HttpPatch]
+        [HttpPut]
         public JsonResult UpdateUser(string emailId, string address)
         {
             bool isUpdated = false;
