@@ -147,6 +147,25 @@ namespace QuickStartServiceLayer.Controllers
             return Json(new { Result = returnResult, ProductId });
         }
 
+        [HttpPost]
+        public JsonResult RegisterUserUsingStoredProcedure(Models.User user)
+        {
+            int returnResult = 0;
+            User newUser = _mapper.Map<User>(user);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    returnResult = _quickStartRepository.RegisterUserUsingStoredProcedure(newUser);
+                }
+                catch (Exception ex)
+                {
+                    returnResult = 0;
+                }
+            }
+            return Json(returnResult);
+        }
+
         [HttpPut]
         public JsonResult UpdateCategory(int categoryId, string categoryName)
         {

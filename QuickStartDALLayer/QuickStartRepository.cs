@@ -156,6 +156,32 @@ namespace QuickStartDALLayer
             return returnResult;
         }
 
+        public int RegisterUserUsingStoredProcedure(User user) { 
+            int returnResult = 0;
+            int noOfRowsAffected = 0;
+            SqlParameter prmEmailId = new SqlParameter("@EmailId", user.EmailId);
+            SqlParameter prmUserPassword = new SqlParameter("@UserPassword", user.UserPassword);
+            SqlParameter prmGender = new SqlParameter("@Gender", user.Gender);
+            SqlParameter prmDateOfBirth = new SqlParameter("@DateOfBirth",user.DateOfBirth);
+            SqlParameter prmAddress = new SqlParameter("@Address", user.Address);
+            SqlParameter prmReturnValue = new SqlParameter("@ReturnValue", System.Data.SqlDbType.Int);
+            prmReturnValue.Direction = System.Data.ParameterDirection.Output;
+
+            try
+            {
+                noOfRowsAffected = QuickStartDbContext.Database.ExecuteSqlRaw("EXEC @ReturnValue = usp_RegisterUser @EmailId, @UserPassword, @Gender, @DateOfBirth, @Address",
+                    prmReturnValue, prmEmailId, prmUserPassword, prmGender, prmDateOfBirth, prmAddress);
+
+                returnResult = Convert.ToInt32(prmReturnValue.Value);
+            }
+            catch (Exception ex)
+            {
+                returnResult = -99;
+                noOfRowsAffected = 0;
+            }
+            return returnResult;
+        }
+
         public bool UpdateCategory(int categoryId, string categoryName)
         {
             bool status = false;
