@@ -37,7 +37,11 @@ namespace QuickStartDALLayer
             List<User> users = new List<User>();
             try
             {
-                users = QuickStartDbContext.Users.ToList();
+                users = QuickStartDbContext.Users.OrderBy(c => c.EmailId).ToList();
+                foreach(var user in users)
+                {
+                    user.UserPassword = "";
+                }
             }
             catch (Exception ex)
             {
@@ -104,6 +108,36 @@ namespace QuickStartDALLayer
             }
 
             return product;
+        }
+
+        public User GetUserByEmailId(string emailId)
+        {
+            User user = new User();
+            try
+            {
+                user = QuickStartDbContext.Users.Where(u => u.EmailId == emailId).FirstOrDefault();
+                user.UserPassword = Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(user.UserPassword)); //Encoding
+                //user.UserPassword = Encoding.UTF8.GetString(Convert.FromBase64String(user.UserPassword)); //Decoding
+            }
+            catch (Exception ex)
+            {
+                user = null;
+            }
+            return user;
+        }
+
+        public Category GetCategoryByCategoryId(int categoryId)
+        {
+            Category category = new Category();
+            try
+            {
+                category = QuickStartDbContext.Categories.Where(c => c.CategoryId == categoryId).FirstOrDefault();
+            }
+            catch (Exception ex)
+            {
+                category = null;
+            }
+            return category;
         }
 
         public bool AddCategory(string categoryName)
@@ -215,6 +249,30 @@ namespace QuickStartDALLayer
                 if (product != null)
                 {
                     product.Price = price;
+                    QuickStartDbContext.SaveChanges();
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return status;
+        }
+
+        public bool UpdateUser(string emailId, string address)
+        {
+            bool status = false;
+            try
+            {
+                var user = QuickStartDbContext.Users.Find(emailId);
+                if (user != null)
+                {
+                    user.Address = address;
                     QuickStartDbContext.SaveChanges();
                     status = true;
                 }

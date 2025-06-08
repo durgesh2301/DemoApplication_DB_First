@@ -109,6 +109,36 @@ namespace QuickStartServiceLayer.Controllers
             return Json(product);
         }
 
+        [HttpGet]
+        public JsonResult GetUserByEmailId(string emailId)
+        {
+            User user = new User();
+            try
+            {
+                user = _quickStartRepository.GetUserByEmailId(emailId);
+            }
+            catch (Exception ex)
+            {
+                user = null;
+            }
+            return Json(user);
+        }
+
+        [HttpGet]
+        public JsonResult GetCategoryByCategoryId(int categoryId)
+        {
+            Category category = new Category();
+            try
+            {
+                category = _quickStartRepository.GetCategoryByCategoryId(categoryId);
+            }
+            catch (Exception ex)
+            {
+                category = null;
+            }
+            return Json(category);
+        }
+
         [HttpPost]
         public JsonResult AddCategory(string categoryName)
         {
@@ -188,6 +218,21 @@ namespace QuickStartServiceLayer.Controllers
             try
             {
                 isUpdated = _quickStartRepository.UpdateProduct(productId, price);
+            }
+            catch (Exception ex)
+            {
+                isUpdated = false;
+            }
+            return Json(isUpdated);
+        }
+
+        [HttpPatch]
+        public JsonResult UpdateUser(string emailId, string address)
+        {
+            bool isUpdated = false;
+            try
+            {
+                isUpdated = _quickStartRepository.UpdateUser(emailId, address);
             }
             catch (Exception ex)
             {
