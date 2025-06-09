@@ -10,3 +10,9 @@ Key Features:
 •	Clean separation of concerns with repository and service layers
 •	Modern .NET 8 features and C# 12 syntax
 This project serves as a solid foundation for building scalable, maintainable, and testable web APIs in .NET.
+
+Getting Started
+1.	Clone the repository.
+2.	Update the appsettings.json with your SQL Server connection string.
+3.	Build and run the solution.
+4.	Use the Console UI or API endpoints to interact with the system.
