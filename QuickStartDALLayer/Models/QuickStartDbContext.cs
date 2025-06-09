@@ -115,7 +115,7 @@ public partial class QuickStartDbContext : DbContext
                 .IsUnicode(false)
                 .IsFixedLength();
 
-            entity.HasOne(d => d.Email).WithMany(p => p.PurchaseDetails)
+            entity.HasOne(d => d.User).WithMany(p => p.PurchaseDetails)
                 .HasForeignKey(d => d.EmailId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__PurchaseD__Email__35BCFE0A");

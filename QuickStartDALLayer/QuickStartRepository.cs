@@ -64,6 +64,20 @@ namespace QuickStartDALLayer
             return products;
         }
 
+        public List<PurchaseDetail> GetAllPurchaseDetails()
+        {
+            List<PurchaseDetail> purchaseDetails = new List<PurchaseDetail>();
+            try
+            {
+                purchaseDetails = QuickStartDbContext.PurchaseDetails.ToList();
+            }
+            catch (Exception ex)
+            {
+                purchaseDetails = null;
+            }
+            return purchaseDetails;
+        }
+
         public List<Product> GetProductsOnCategoryId(int categoryId)
         {
             List<Product> products = new List<Product>();
@@ -313,6 +327,53 @@ namespace QuickStartDALLayer
             return status;
         }
 
+        public bool DeleteProduct(string productId)
+        {
+            bool status = false;
+            try
+            {
+                var product = QuickStartDbContext.Products.Find(productId);
+                if (product != null)
+                {
+                    QuickStartDbContext.Products.Remove(product);
+                    QuickStartDbContext.SaveChanges();
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return status;
+        }
+
+        public bool DeleteUser(string emailId)
+        {
+            bool status = false;
+            try
+            {
+                var user = QuickStartDbContext.Users.Find(emailId);
+                if (user != null)
+                {
+                    QuickStartDbContext.Users.Remove(user);
+                    QuickStartDbContext.SaveChanges();
+                    status = true;
+                }
+                else
+                {
+                    status = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                status = false;
+            }
+            return status;
+        }
         public string GetProductIdUsingSVF()
         {
             string ProductId = string.Empty;

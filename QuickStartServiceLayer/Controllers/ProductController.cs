@@ -63,6 +63,21 @@ namespace QuickStartServiceLayer.Controllers
             return Json(products);
         }
 
+        [HttpGet]
+        public JsonResult GetAllPurchaseDetails()
+        {
+            List<Models.PurchaseDetail> purchaseDetails = new List<Models.PurchaseDetail>();
+            try
+            {
+                purchaseDetails = _mapper.Map<List<Models.PurchaseDetail>>(_quickStartRepository.GetAllPurchaseDetails());
+            }
+            catch (Exception ex)
+            {
+                purchaseDetails = null;
+            }
+            return Json(purchaseDetails);
+        }
+
         //[HttpGet("GetProductsOnCategoryId/{categoryId}")]
         [HttpGet]
         public JsonResult GetProductsOnCategoryId(int categoryId)
@@ -254,6 +269,37 @@ namespace QuickStartServiceLayer.Controllers
                 isDeleted = false;
             }
             return Json(isDeleted);
+        }
+
+        [HttpDelete]
+        public JsonResult DeleteProduct(string productId)
+        {
+            bool isDeleted = false;
+            try
+            {
+                isDeleted = _quickStartRepository.DeleteProduct(productId);
+            }
+            catch (Exception ex)
+            {
+                isDeleted = false;
+            }
+            return Json(isDeleted);
+        }
+
+        [HttpDelete]
+        public JsonResult DeleteUser(string emailId)
+        {
+            bool isDeleted = false;
+            try
+            {
+                isDeleted = _quickStartRepository.DeleteUser(emailId);
+            }
+            catch (Exception ex)
+            {
+                isDeleted = false;
+            }
+            return Json(isDeleted);
+
         }
     }
 }

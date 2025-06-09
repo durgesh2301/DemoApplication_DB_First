@@ -15,7 +15,7 @@ public partial class PurchaseDetail
 
     public DateTime DateOfPurchase { get; set; }
 
-    public virtual User Email { get; set; }
+    public virtual User User { get; set; }
 
     public virtual Product Product { get; set; }
 }
