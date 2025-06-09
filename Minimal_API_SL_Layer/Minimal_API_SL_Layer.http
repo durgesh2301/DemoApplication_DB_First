@@ -1,0 +1,6 @@
+@Minimal_API_SL_Layer_HostAddress = http://localhost:5200
+
+GET {{Minimal_API_SL_Layer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

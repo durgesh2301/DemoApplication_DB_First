@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStartServiceLayer", "Q
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickStartDALLayer", "QuickStartDALLayer\QuickStartDALLayer.csproj", "{80AFF3CA-6DA0-DE4B-44F8-D6B4776F7440}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minimal_API_SL_Layer", "Minimal_API_SL_Layer\Minimal_API_SL_Layer.csproj", "{61C2371D-A7D7-4BEC-886C-1931FDF1ECD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{80AFF3CA-6DA0-DE4B-44F8-D6B4776F7440}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80AFF3CA-6DA0-DE4B-44F8-D6B4776F7440}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80AFF3CA-6DA0-DE4B-44F8-D6B4776F7440}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61C2371D-A7D7-4BEC-886C-1931FDF1ECD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61C2371D-A7D7-4BEC-886C-1931FDF1ECD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61C2371D-A7D7-4BEC-886C-1931FDF1ECD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61C2371D-A7D7-4BEC-886C-1931FDF1ECD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
